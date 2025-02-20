@@ -1,0 +1,64 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background-primary: #f8fafc;
+    --background-secondary: #f1f5f9;
+    --background-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --accent-primary: #4f46e5;
+    --accent-secondary: #6366f1;
+  }
+
+  .dark {
+    --background-primary: #0f172a;
+    --background-secondary: #1e293b;
+    --background-card: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --accent-primary: #6366f1;
+    --accent-secondary: #818cf8;
+  }
+
+  body {
+    @apply bg-background-primary text-text-primary antialiased;
+    transition: background-color 0.3s ease;
+  }
+}
+
+@layer components {
+  .animate-fade-in {
+    @apply opacity-0 animate-[fade-in_0.3s_ease-in-out_forwards];
+  }
+
+  .animate-slide-in {
+    @apply opacity-0 translate-y-4 animate-[slide-in_0.3s_ease-in-out_forwards];
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-background-secondary rounded;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 
