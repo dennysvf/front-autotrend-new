@@ -13,7 +13,11 @@ export function SearchBar() {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         placeholder="Buscar robôs, estratégias..."
-        className="w-full px-4 py-2 pl-10 rounded-lg bg-background-secondary/50 focus:bg-background-secondary border border-transparent focus:border-accent-primary/20 focus:outline-none transition-all text-text-primary placeholder:text-text-secondary"
+        className="w-full px-4 py-2 pl-10 rounded-lg 
+          bg-background border border-background-secondary
+          focus:border-accent-primary/20 
+          text-text-primary placeholder:text-text-secondary
+          focus:outline-none transition-all"
       />
       <div className="absolute left-3 top-1/2 -translate-y-1/2 text-text-secondary">
         {isSearching ? (
@@ -38,4 +42,4 @@ export function SearchBar() {
       <SearchResults />
     </div>
   )
-} 
+}

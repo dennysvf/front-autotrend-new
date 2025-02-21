@@ -1,5 +1,9 @@
 'use client'
 
+import { Card } from '@/components/ui/Card'
+import { Typography } from '@/components/ui/Typography'
+import { Quote } from './Quote'
+
 interface Quote {
   symbol: string
   price: number
@@ -14,21 +18,22 @@ const quotes: Quote[] = [
 
 export function QuotesPanel() {
   return (
-    <div className="bg-background-card p-6 rounded-lg">
-      <h2 className="text-lg font-medium mb-4">Cotações</h2>
-      <div className="text-sm text-text-secondary mb-2">Cotações em tempo real</div>
+    <Card className="p-6">
+      <Typography.H4 className="mb-4">Cotações</Typography.H4>
+      <Typography.Text className="text-text-secondary mb-2 block">
+        Cotações em tempo real
+      </Typography.Text>
       
-      <div className="space-y-4">
+      <div className="space-y-2">
         {quotes.map((quote) => (
-          <div key={quote.symbol} className="flex justify-between items-center">
-            <span className="font-medium">{quote.symbol}</span>
-            <div className="text-right">
-              <div>R$ {quote.price.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</div>
-              <div className="text-sm text-text-secondary">{quote.change}%</div>
-            </div>
-          </div>
+          <Quote
+            key={quote.symbol}
+            symbol={quote.symbol}
+            price={quote.price}
+            change={quote.change}
+          />
         ))}
       </div>
-    </div>
+    </Card>
   )
-} 
+}

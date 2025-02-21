@@ -4,29 +4,36 @@ import { DashboardLayout } from '@/components/layout/DashboardLayout'
 import { RobosList } from '@/components/analise/RobosList'
 import { QuotesPanel } from '@/components/analise/QuotesPanel'
 import { PositionsPanel } from '@/components/analise/PositionsPanel'
-import { RoboCard } from '@/components/analise/RoboCard'
+import { RoboStatusCard } from '@/components/robos/RoboStatusCard'
+import { Button } from '@/components/ui/Button'
+import { Typography } from '@/components/ui/Typography'
 
 export default function AnaliseGeral() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-semibold">Análise Geral</h1>
-          <button className="bg-accent-primary text-white px-4 py-2 rounded-lg hover:bg-accent-primary/90 transition-colors">
-            Ir para a listagem de robôs
-          </button>
+          <Typography.H2>Análise Geral</Typography.H2>
+          <Button variant="default" asChild>
+            <a href="/robos">Ir para a listagem de robôs</a>
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <RoboStatusCard
+            title="Robôs Executando"
+            subtitle="Plano Diretoria E Parceiros"
+            count={3}
+            onStopAll={() => console.log('Parando todos os robôs')}
+          />
           <QuotesPanel />
-          <RobosList />
           <PositionsPanel />
         </div>
 
         <div className="grid grid-cols-1 gap-6">
-          <RoboCard />
+          <RobosList />
         </div>
       </div>
     </DashboardLayout>
   )
-} 
+}

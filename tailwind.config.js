@@ -43,4 +43,4 @@ module.exports = {
     'hover:bg-background-secondary/70',
   ],
   plugins: [],
-} 
+}

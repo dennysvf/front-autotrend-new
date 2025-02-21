@@ -161,7 +161,7 @@ export function Sidebar() {
       fixed left-0 top-0 z-40 h-screen pt-16 
       transition-transform duration-300
       ${isOpen ? 'translate-x-0' : '-translate-x-full'}
-      bg-white border-r border-gray-200 w-64
+      bg-background border-r border-background-secondary w-64
     `}>
       <div className="h-full px-3 py-4 overflow-y-auto">
         <ul className="space-y-2">
@@ -173,16 +173,16 @@ export function Sidebar() {
                     onClick={() => toggleSubmenu(item.label)}
                     className={`
                       flex items-center justify-between w-full p-2 rounded-lg
-                      hover:bg-gray-100 transition-colors
-                      ${pathname.startsWith(item.href) ? 'bg-gray-100' : ''}
+                      hover:bg-background-secondary/10 transition-colors
+                      ${pathname?.startsWith(item.href) ? 'bg-background-secondary/10' : ''}
                     `}
                   >
                     <div className="flex items-center">
-                      <item.icon className="w-5 h-5 text-gray-500" />
-                      <span className="ml-3">{item.label}</span>
+                      <item.icon className="w-5 h-5 text-text-secondary" />
+                      <span className="ml-3 text-text-primary">{item.label}</span>
                     </div>
                     <ChevronDown 
-                      className={`w-4 h-4 transition-transform duration-200 
+                      className={`w-4 h-4 transition-transform duration-200 text-text-secondary
                       ${isSubmenuExpanded(item.label) ? 'rotate-180' : ''}`}
                     />
                   </button>
@@ -191,12 +191,12 @@ export function Sidebar() {
                     href={item.href}
                     className={`
                       flex items-center p-2 rounded-lg
-                      hover:bg-gray-100 transition-colors
-                      ${pathname === item.href ? 'bg-gray-100' : ''}
+                      hover:bg-background-secondary/10 transition-colors
+                      ${pathname && pathname === item.href ? 'bg-background-secondary/10' : ''}
                     `}
                   >
-                    <item.icon className="w-5 h-5 text-gray-500" />
-                    <span className="ml-3">{item.label}</span>
+                    <item.icon className="w-5 h-5 text-text-secondary" />
+                    <span className="ml-3 text-text-primary">{item.label}</span>
                   </Link>
                 )}
 
@@ -208,8 +208,8 @@ export function Sidebar() {
                           href={subItem.href}
                           className={`
                             flex items-center p-2 rounded-lg text-sm
-                            hover:bg-gray-100 transition-colors
-                            ${pathname === subItem.href ? 'bg-gray-100 text-primary' : 'text-gray-600'}
+                            hover:bg-background-secondary/10 transition-colors
+                            ${pathname === subItem.href ? 'bg-background-secondary/10 text-accent-primary' : 'text-text-secondary'}
                           `}
                         >
                           {subItem.label}
@@ -225,4 +225,4 @@ export function Sidebar() {
       </div>
     </aside>
   )
-} 
+}

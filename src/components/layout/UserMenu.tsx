@@ -22,10 +22,10 @@ export function UserMenu() {
     <div className="relative" ref={menuRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-3 pl-4 border-l border-background-secondary hover:bg-background-secondary/10 rounded-lg p-2 transition-colors"
+        className="flex items-center gap-3 pl-4 border-l border-background-secondary hover:bg-background-secondary/10 rounded-lg p-2 transition-colors text-text-primary"
       >
         <div className="text-right">
-          <p className="text-sm font-medium">Dominik K.</p>
+          <p className="text-sm font-medium text-text-primary">Dominik K.</p>
           <p className="text-xs text-text-secondary">Administrador</p>
         </div>
         <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent-primary to-accent-secondary flex items-center justify-center text-white font-medium">
@@ -34,7 +34,7 @@ export function UserMenu() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 top-full mt-2 w-56 bg-background-card rounded-lg shadow-lg border border-background-secondary overflow-hidden z-50">
+        <div className="absolute right-0 top-full mt-2 w-56 bg-background rounded-lg shadow-lg border border-background-secondary overflow-hidden z-50">
           <div className="p-3 border-b border-background-secondary">
             <p className="text-sm font-medium">Dominik Kuhn</p>
             <p className="text-xs text-text-secondary">dominik@example.com</p>
@@ -66,4 +66,4 @@ export function UserMenu() {
       )}
     </div>
   )
-} 
+}

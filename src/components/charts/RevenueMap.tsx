@@ -11,7 +11,7 @@ const locations = [
 ]
 
 export function RevenueMap() {
-  const { theme } = useTheme()
+  const { isDark } = useTheme()
   
   return (
     <div className="bg-background-card rounded-lg p-6">
@@ -40,4 +40,4 @@ export function RevenueMap() {
       </div>
     </div>
   )
-} 
+}

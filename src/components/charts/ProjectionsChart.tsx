@@ -2,7 +2,7 @@
 
 import React from 'react'
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { useTheme } from '@/providers/ThemeProvider'
+import { useTheme } from '@/providers/ThemeProvider' // Altere esta linha
 
 const data = [
   { month: 'Jan', projeção: 65, atual: 45 },
@@ -20,9 +20,9 @@ const data = [
 ]
 
 export function ProjectionsChart() {
-  const { theme } = useTheme()
-  const textColor = theme === 'dark' ? '#fff' : '#111827'
-  const gridColor = theme === 'dark' ? '#374151' : '#E5E7EB'
+  const { isDark } = useTheme()
+  const textColor = isDark ? '#fff' : '#111827'
+  const gridColor = isDark ? '#374151' : '#E5E7EB'
 
   return (
     <div className="h-[400px] bg-background-card p-6 rounded-lg">
@@ -34,7 +34,7 @@ export function ProjectionsChart() {
           <YAxis stroke={textColor} />
           <Tooltip
             contentStyle={{
-              backgroundColor: theme === 'dark' ? '#374151' : '#fff',
+              backgroundColor: isDark ? '#374151' : '#fff',
               borderColor: gridColor,
               color: textColor,
             }}
@@ -45,4 +45,4 @@ export function ProjectionsChart() {
       </ResponsiveContainer>
     </div>
   )
-} 
+}

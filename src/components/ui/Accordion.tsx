@@ -4,7 +4,13 @@ import * as React from 'react'
 import * as AccordionPrimitive from '@radix-ui/react-accordion'
 import { ChevronDown } from 'lucide-react'
 
-const Accordion = AccordionPrimitive.Root
+type AccordionType = typeof AccordionPrimitive.Root & {
+  Item: typeof AccordionItem
+  Trigger: typeof AccordionTrigger
+  Content: typeof AccordionContent
+}
+
+const Accordion = AccordionPrimitive.Root as AccordionType
 
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
@@ -63,4 +69,4 @@ export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
 // Adicionar ao componente principal para facilitar o uso
 Accordion.Item = AccordionItem
 Accordion.Trigger = AccordionTrigger
-Accordion.Content = AccordionContent 
+Accordion.Content = AccordionContent

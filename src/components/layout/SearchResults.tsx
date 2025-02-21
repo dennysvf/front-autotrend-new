@@ -24,7 +24,7 @@ export function SearchResults() {
   return (
     <div
       ref={resultsRef}
-      className="absolute top-full left-0 right-0 mt-2 bg-background-card rounded-lg shadow-lg border border-background-secondary overflow-hidden z-50"
+      className="absolute top-full left-0 right-0 mt-2 bg-background rounded-lg shadow-lg border border-background-secondary overflow-hidden z-50"
     >
       {isSearching ? (
         <div className="p-4 text-center">
@@ -50,4 +50,4 @@ export function SearchResults() {
       )}
     </div>
   )
-} 
+}

@@ -9,6 +9,7 @@ import { ActivityFeed } from '@/components/dashboard/ActivityFeed'
 import { DashboardCharts } from '@/components/dashboard/DashboardCharts'
 import { RobosList } from '@/components/analise/RobosList'
 import { PositionsPanel } from '@/components/analise/PositionsPanel'
+import { MetricCard } from '@/components/ui/MetricCard'
 
 const stats = [
   {
@@ -60,7 +61,7 @@ export default function HomePage() {
             </div>
           </div>
           {stats.map((stat) => (
-            <Card key={stat.title} {...stat} loading={isLoading} />
+            <MetricCard key={stat.title} {...stat} loading={isLoading} />
           ))}
         </div>
         
@@ -84,4 +85,4 @@ export default function HomePage() {
       </div>
     </DashboardLayout>
   )
-} 
+}

@@ -15,57 +15,28 @@ const data = [
 ]
 
 export function RevenueChart() {
-  const { theme } = useTheme()
-  const textColor = theme === 'dark' ? '#fff' : '#111827'
-  const gridColor = theme === 'dark' ? '#374151' : '#E5E7EB'
+  const { isDark } = useTheme()
+  const textColor = isDark ? '#fff' : '#111827'
+  const gridColor = isDark ? '#374151' : '#E5E7EB'
 
   return (
     <div className="h-[400px] bg-background-card p-6 rounded-lg">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-lg font-medium">Receita Semanal</h3>
-        <div className="flex gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-accent-primary" />
-            <span className="text-sm">Atual</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="w-3 h-3 rounded-full bg-accent-secondary" />
-            <span className="text-sm">Anterior</span>
-          </div>
-        </div>
-      </div>
+      <h3 className="text-lg font-medium mb-6">Receita</h3>
       <ResponsiveContainer width="100%" height="100%">
         <LineChart data={data}>
           <CartesianGrid strokeDasharray="3 3" stroke={gridColor} />
-          <XAxis dataKey="day" stroke={textColor} />
-          <YAxis 
-            stroke={textColor}
-            tickFormatter={(value) => `R$ ${(value / 1000).toFixed(1)}k`}
-          />
+          <XAxis dataKey="month" stroke={textColor} />
+          <YAxis stroke={textColor} />
           <Tooltip
             contentStyle={{
-              backgroundColor: theme === 'dark' ? '#374151' : '#fff',
+              backgroundColor: isDark ? '#374151' : '#fff',
               borderColor: gridColor,
               color: textColor,
             }}
-            formatter={(value: number) => [`R$ ${value.toLocaleString()}`, '']}
           />
-          <Line 
-            type="monotone" 
-            dataKey="atual" 
-            stroke="var(--accent-primary)" 
-            strokeWidth={2}
-            dot={false}
-          />
-          <Line 
-            type="monotone" 
-            dataKey="anterior" 
-            stroke="var(--accent-secondary)" 
-            strokeWidth={2}
-            dot={false}
-          />
+          <Line type="monotone" dataKey="value" stroke="var(--accent-primary)" />
         </LineChart>
       </ResponsiveContainer>
     </div>
   )
-} 
+}

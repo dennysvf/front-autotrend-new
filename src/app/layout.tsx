@@ -1,9 +1,11 @@
+'use client'
+
+import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/providers/ThemeProvider'
 import { SidebarProvider } from '@/providers/SidebarProvider'
 import { SearchProvider } from '@/providers/SearchProvider'
-import { Inter } from 'next/font/google'
-import '@/styles/globals.css'
 import { SupportChat } from '@/components/chat/SupportChat'
+import '@/styles/globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" suppressHydrationWarning>
+    <html lang="pt-BR">
       <body className={inter.className}>
         <ThemeProvider>
           <SidebarProvider>
@@ -26,4 +28,4 @@ export default function RootLayout({
       </body>
     </html>
   )
-} 
+}

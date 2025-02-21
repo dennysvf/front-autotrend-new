@@ -4,7 +4,10 @@ import * as React from 'react'
 import * as SwitchPrimitives from '@radix-ui/react-switch'
 
 interface SwitchProps extends React.ComponentPropsWithoutRef<typeof SwitchPrimitives.Root> {
-  size?: 'sm' | 'md'
+  defaultChecked?: boolean; // Add this line
+  size?: 'sm' | 'md',
+  onCheckedChange?: (checked: boolean) => void; // Add this line
+  className?: string
 }
 
 export const Switch = React.forwardRef<
@@ -46,5 +49,3 @@ export const Switch = React.forwardRef<
     </SwitchPrimitives.Root>
   )
 })
-
-Switch.displayName = 'Switch' 

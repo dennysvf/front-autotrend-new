@@ -1,5 +1,9 @@
+'use client'
 import React from 'react'
 import { Table } from '@/components/ui/Table'
+import { Button } from '@/components/ui/Button'
+import { ArrowRight } from 'lucide-react'
+import { Column } from '@/components/ui/Table'
 
 interface Product {
   id: string
@@ -47,18 +51,24 @@ const products: Product[] = [
   }
 ]
 
-const columns = [
-  { header: 'Produto', accessor: 'name' as const },
+const columns: Column<Product>[] = [
+  {
+    header: 'Produto',
+    accessor: 'name',
+  },
   {
     header: 'Preço',
-    accessor: 'price' as const,
-    cell: (value: number) => `R$ ${value.toFixed(2)}`
+    accessor: 'price',
+    cell: (value: string | number) => `R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
   },
-  { header: 'Quantidade', accessor: 'quantity' as const },
+  {
+    header: 'Quantidade',
+    accessor: 'quantity',
+  },
   {
     header: 'Total',
-    accessor: 'total' as const,
-    cell: (value: number) => `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
+    accessor: 'total',
+    cell: (value: string | number) => `R$ ${Number(value).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}`
   }
 ]
 
@@ -74,4 +84,4 @@ export function TopProducts() {
       <Table columns={columns} data={products} />
     </div>
   )
-} 
+}

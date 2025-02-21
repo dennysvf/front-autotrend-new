@@ -1,7 +1,9 @@
 'use client'
 
 import { useState } from 'react'
+import { RoboItem } from './RoboItem'
 import { RoboDetailsModal } from './RoboDetailsModal'
+import { Typography } from '@/components/ui/Typography'
 
 interface Robo {
   id: string
@@ -49,44 +51,36 @@ export function RobosList({ status }: RobosListProps) {
         <table className="w-full">
           <thead>
             <tr className="text-left border-b border-background-secondary">
-              <th className="pb-3 font-medium text-text-secondary">ID</th>
-              <th className="pb-3 font-medium text-text-secondary">Nome</th>
-              <th className="pb-3 font-medium text-text-secondary">Estratégia</th>
-              <th className="pb-3 font-medium text-text-secondary">Simulador</th>
-              <th className="pb-3 font-medium text-text-secondary">Retorno</th>
-              <th className="pb-3 font-medium text-text-secondary">Saldo Diário</th>
-              <th className="pb-3 font-medium text-text-secondary">Ações</th>
+              <th className="pb-3">
+                <Typography.Text variant="secondary">ID</Typography.Text>
+              </th>
+              <th className="pb-3">
+                <Typography.Text variant="secondary">Nome</Typography.Text>
+              </th>
+              <th className="pb-3">
+                <Typography.Text variant="secondary">Estratégia</Typography.Text>
+              </th>
+              <th className="pb-3">
+                <Typography.Text variant="secondary">Simulador</Typography.Text>
+              </th>
+              <th className="pb-3">
+                <Typography.Text variant="secondary">Retorno</Typography.Text>
+              </th>
+              <th className="pb-3">
+                <Typography.Text variant="secondary">Saldo Diário</Typography.Text>
+              </th>
+              <th className="pb-3">
+                <Typography.Text variant="secondary">Ações</Typography.Text>
+              </th>
             </tr>
           </thead>
           <tbody>
             {filteredRobos.map((robo) => (
-              <tr key={robo.id} className="border-b border-background-secondary/50 hover:bg-background-secondary/5">
-                <td className="py-4">#{robo.id}</td>
-                <td className="py-4">{robo.nome}</td>
-                <td className="py-4">{robo.estrategia}</td>
-                <td className="py-4">{robo.simulador}</td>
-                <td className="py-4">{robo.retorno}</td>
-                <td className={`py-4 ${robo.saldoDiario < 0 ? 'text-red-500' : 'text-green-500'}`}>
-                  R$ {robo.saldoDiario.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
-                </td>
-                <td className="py-4">
-                  <div className="flex items-center gap-2">
-                    <button 
-                      onClick={() => setSelectedRobo(robo)}
-                      className="p-1.5 rounded-lg bg-background-secondary hover:bg-background-secondary/70 transition-colors"
-                      title="Ver detalhes"
-                    >
-                      📊
-                    </button>
-                    <button className="p-1.5 rounded-lg bg-background-secondary hover:bg-background-secondary/70 transition-colors">
-                      🔄
-                    </button>
-                    <button className="p-1.5 rounded-lg bg-background-secondary hover:bg-background-secondary/70 transition-colors">
-                      ⏸️
-                    </button>
-                  </div>
-                </td>
-              </tr>
+              <RoboItem
+                key={robo.id}
+                {...robo}
+                onViewDetails={() => setSelectedRobo(robo)}
+              />
             ))}
           </tbody>
         </table>
@@ -101,4 +95,4 @@ export function RobosList({ status }: RobosListProps) {
       )}
     </>
   )
-} 
+}

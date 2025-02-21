@@ -16,7 +16,7 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
   const { isOpen } = useSidebar()
   
   return (
-    <div className="min-h-screen bg-background-primary">
+    <div className="min-h-screen bg-background">
       <Header />
       <Sidebar />
       <main className={`pt-16 transition-all duration-300 ${
@@ -33,4 +33,4 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
       </main>
     </div>
   )
-} 
+}

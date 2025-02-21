@@ -1,5 +1,11 @@
 'use client'
 
+interface SearchResult {
+  id: number
+  name: string
+  strategy: string
+}
+
 import React, { createContext, useContext, useState, useCallback } from 'react'
 import { useDebounce } from '@/hooks/useDebounce'
 
@@ -15,8 +21,9 @@ const SearchContext = createContext<SearchContextType | undefined>(undefined)
 
 export function SearchProvider({ children }: { children: React.ReactNode }) {
   const [searchTerm, setSearchTerm] = useState('')
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([])
   const [isSearching, setIsSearching] = useState(false)
-  const [searchResults, setSearchResults] = useState([])
+
   const debouncedSearchTerm = useDebounce(searchTerm, 500)
 
   // Simular uma busca
@@ -76,4 +83,4 @@ export const useSearch = () => {
     throw new Error('useSearch must be used within SearchProvider')
   }
   return context
-} 
+}
